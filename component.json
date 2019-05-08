@@ -1,0 +1,484 @@
+{
+    "title": "Wealthport API",
+    "description": "Onedot provides a simple, lightweight and open Web API based on the Open API 2.0 standard (<a href=\"https://www.openapis.org\" target=\"_blank\">https://www.openapis.org</a>). Our APIs offer a variety of operations related to managing Sources, Folders, Orders and Recipes. There are operations to submit and track Jobs, upload and download data files and many more.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/wealthport.com/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.wealthport.com/gateway/public/endpoints/1.0",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Using_HTTP_Header": {
+                "label": "X-API-Key (Using_HTTP_Header)",
+                "viewClass": "TextFieldView"
+            },
+            "Using_URL_Query_Parameter": {
+                "label": "apikey (Using_URL_Query_Parameter)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "retrieveFolders": {
+            "main": "./lib/actions/retrieveFolders.js",
+            "title": "Retrieve Folders",
+            "description": "Retrieves all Folders in the Data Inventory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveFolders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createFolder": {
+            "main": "./lib/actions/createFolder.js",
+            "title": "Create Folder",
+            "description": "Creates the specified Folder in the Data Inventory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createFolder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteFolder": {
+            "main": "./lib/actions/deleteFolder.js",
+            "title": "Delete Folder",
+            "description": "Deletes the specified Folder and all contained Sources from the Data Inventory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteFolder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveFolder": {
+            "main": "./lib/actions/retrieveFolder.js",
+            "title": "Retrieve Folder",
+            "description": "Retrieves the specified Folder.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveFolder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateFolder": {
+            "main": "./lib/actions/updateFolder.js",
+            "title": "Update Folder",
+            "description": "Updates the specified Folder.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateFolder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteFolderSources": {
+            "main": "./lib/actions/deleteFolderSources.js",
+            "title": "Delete Sources",
+            "description": "Deletes all Sources in the specified Folder.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteFolderSources.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveFolderSources": {
+            "main": "./lib/actions/retrieveFolderSources.js",
+            "title": "Retrieve Sources",
+            "description": "Retrieves all Sources of the specified Folder.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveFolderSources.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getResult": {
+            "main": "./lib/actions/getResult.js",
+            "title": "Get Result",
+            "description": "Returns the result of a finished Job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getResult.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getStatus": {
+            "main": "./lib/actions/getStatus.js",
+            "title": "Get Status",
+            "description": "Retrieves the status of a Job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveOrders": {
+            "main": "./lib/actions/retrieveOrders.js",
+            "title": "Retrieve Orders",
+            "description": "Retrieves all previously submitted Orders.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveOrders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createOrder": {
+            "main": "./lib/actions/createOrder.js",
+            "title": "Create Order",
+            "description": "Creates a new Order to be submitted.<p>Orders reference one or more Sources, e.g. uploaded files, as well as one or more Folders (which again can contain Sources).The Recipe describes what to do with the referenced sources and where to publish the processing result to.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteOrder": {
+            "main": "./lib/actions/deleteOrder.js",
+            "title": "Delete Order",
+            "description": "Deletes the specified Order.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveOrder": {
+            "main": "./lib/actions/retrieveOrder.js",
+            "title": "Retrieve Order",
+            "description": "Retrieves the specified Order.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateOrder": {
+            "main": "./lib/actions/updateOrder.js",
+            "title": "Update Order",
+            "description": "Updates the specified Order.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "submitOrder": {
+            "main": "./lib/actions/submitOrder.js",
+            "title": "Submit Order",
+            "description": "Submits the specified Order for processing and launches a corresponding job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/submitOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveRecipes": {
+            "main": "./lib/actions/retrieveRecipes.js",
+            "title": "Retrieve Recipes",
+            "description": "Retrieves all available Recipes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveRecipes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveRecipe": {
+            "main": "./lib/actions/retrieveRecipe.js",
+            "title": "Retrieve Recipe",
+            "description": "Retrieves the specified Recipe.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveRecipe.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveInstructions": {
+            "main": "./lib/actions/retrieveInstructions.js",
+            "title": "Retrieve Instructions",
+            "description": "Retrieves the instructions of the specified Recipe.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveInstructions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateInstructions": {
+            "main": "./lib/actions/updateInstructions.js",
+            "title": "Update Instructions",
+            "description": "Updates the instructions of the specified Recipe.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateInstructions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveSources": {
+            "main": "./lib/actions/retrieveSources.js",
+            "title": "Retrieve Sources",
+            "description": "Retrieves all Sources stored in the Data Inventory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveSources.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createSource": {
+            "main": "./lib/actions/createSource.js",
+            "title": "Create Source",
+            "description": "Creates the specified Source.<p>Sources are either uploaded files or a reference to a database. They are referenced in orders to specify which data needs processing.</p><p>Most clients should probably use the Upload File API which implicitly creates a new source on successful file upload.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createSource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getUploadUrl": {
+            "main": "./lib/actions/getUploadUrl.js",
+            "title": "Upload File",
+            "description": "Initiates a file upload and returns the URL where to upload the file to.<p>Calling this API generates a secure, unique and time-restricted URL where the file can be uploaded to. The URL is available in the <pre>Location</pre> HTTP header of the response. The temporal validity of the URL is available in the <pre>Cache-Control</pre> HTTP header of the response.Clients may perform a <pre>HTTP PUT</pre> request on the URL to upload the file using a form where a file <pre>sample.csv</pre> is passed as property <pre>file=sample.csv</pre>. For security reasons, clients must pass all HTTP headers as returned by the <pre>X-WP-Upload-Headers</pre> in the response, together with their values. This procedure ensures a secure, encrypted file upload.</p><p>Note that calling this API automatically generates a Source, there is no need to call the Create Source API.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getUploadUrl.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteSource": {
+            "main": "./lib/actions/deleteSource.js",
+            "title": "Delete Source",
+            "description": "Deletes the specified Source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteSource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveSource": {
+            "main": "./lib/actions/retrieveSource.js",
+            "title": "Retrieve Source",
+            "description": "Retrieves the specified Source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveSource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateSource": {
+            "main": "./lib/actions/updateSource.js",
+            "title": "Update Source",
+            "description": "Updates the specified Source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateSource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDownloadUrl": {
+            "main": "./lib/actions/getDownloadUrl.js",
+            "title": "Download File",
+            "description": "Initiates a file download and returns the URL where to download the file from.<p>Calling this API generates a secure, unique and time-restricted URL where the file can be downloaded from. The URL is available in the <pre>Location</pre> HTTP header of the response. The time restriction of the URL is availablein the <pre>Cache-Control</pre> HTTP header of the response.Clients may perform a <pre>HTTP GET</pre> request on the URL to download the file.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDownloadUrl.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

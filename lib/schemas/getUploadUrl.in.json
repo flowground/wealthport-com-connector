@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "source": {
+            "required": false,
+            "type": "string"
+        },
+        "folder": {
+            "required": false,
+            "type": "string"
+        },
+        "contentType": {
+            "required": false,
+            "type": "string"
+        },
+        "encoding": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
